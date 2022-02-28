@@ -1,0 +1,15 @@
+from spike import PrimeHub, LightMatrix, Button, StatusLight, ForceSensor, MotionSensor, Speaker, ColorSensor, App, DistanceSensor, Motor, MotorPair
+from spike.control import wait_for_seconds, wait_until, Timer
+
+hub = PrimeHub()
+movement_motors = MotorPair('F' , 'D')
+color_sensor = ColorSensor ('B')
+
+
+hub.light_matrix.show_image('HAPPY')
+#Binary Line following 
+while True:
+    if color_sensor.get_color()=='white':
+        movement_motors.start_tank(10,20)
+    else:
+        movement_motors.start_tank(20,10)
